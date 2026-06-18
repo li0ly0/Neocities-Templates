@@ -1,0 +1,167 @@
+@font-face {
+  font-family: "dinkie9px";
+  src: url('https://chairfiles.vercel.app/DinkieBitmap-9px.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: "pixelmplus10";
+  src: url("https://chairfiles.vercel.app/PixelMplus10-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'pixelmplus10', sans-serif;
+  background-image: url("https://chairfiles.vercel.app/nsotilebg.png");
+  background-repeat: repeat;
+  background-color: #FDF8FD;
+  color: #4D21CB;
+  overflow-x: hidden;
+  cursor: url('https://chairfiles.vercel.app/cursor.png'), auto !important;
+}
+
+a, button, input, textarea {
+  cursor: url('https://chairfiles.vercel.app/cursor.png'), pointer !important;
+}
+
+/* GLOBAL Custom Scrollbar for WebKit */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FDF8FD; border-left: 2px solid #4D23CD; }
+::-webkit-scrollbar-thumb { background: #EFCFEF; border: 1px solid #4D23CD; }
+::-webkit-scrollbar-thumb:hover { background: #f0d1f1; }
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #EFCFEF #FDF8FD;
+}
+
+/* Hide the old dark-mode animations */
+.bg-grid, .scanlines { display: none !important; }
+
+/* OVERRIDE TAILWIND DARK MODE CLASSES */
+.bg-black, .bg-\[\#080808\], .bg-\[\#0a0a0a\], .bg-\[\#111\], .bg-\[\#050505\] { background-color: transparent !important; }
+.text-white, .text-\[\#aaa\], .text-\[\#ccc\], .text-\[\#999\], .text-\[\#888\], .text-\[\#cccccc\], .text-\[\#a3a3a3\], .text-\[\#666\], .text-\[\#555\] { color: #4D21CB !important; }
+.border-\[\#222\], .border-\[\#111\], .border-\[\#333\] { border-color: #4D23CD !important; }
+
+/* OUTER WINDOW FRAME (Connecting container) */
+.retro-window-container {
+  position: relative !important;
+  border: 2px solid #4D23CD !important;
+  background-color: #90F3E1 !important; /* Cyan background acts as the inner frame/gap */
+  padding: 4px 4px 14px 4px !important; /* Matches the exact NSO inner spacing */
+  box-shadow: 4px 4px #4e23cd48 !important; /* Outer drop shadow */
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Creates the cyan gap between title and content */
+  border-radius: 0 !important;
+  color: #4D21CB !important;
+  font-family: 'pixelmplus10', sans-serif !important;
+}
+
+/* Bottom-left graphic: Evenly spaced squares linked like a chain */
+.retro-window-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 6px;
+  width: 50px;
+  height: 8px;
+  background-image: url("data:image/svg+xml,%3Csvg width='50' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1,10 L1,1 L17,1 L17,10' fill='%23FDF8FD' stroke='%234D23CD' stroke-width='2' /%3E%3Crect x='21' y='1' width='6' height='6' fill='%2390F3E1' stroke='%234D23CD' stroke-width='2' /%3E%3Crect x='31' y='1' width='6' height='6' fill='%2390F3E1' stroke='%234D23CD' stroke-width='2' /%3E%3Crect x='41' y='1' width='6' height='6' fill='%2390F3E1' stroke='%234D23CD' stroke-width='2' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* INNER TITLE BAR (Independent bordered box) */
+.retro-title-bar {
+  padding: 6px 10px !important; 
+  background-color: #EFCFEF !important;
+  border: 2px solid #4D23CD !important;
+  position: relative !important;
+  z-index: 10 !important;
+  color: #4D21CB !important;
+  font-family: 'dinkie9px', sans-serif !important;
+  background-image: url("https://chairfiles.vercel.app/navbuttons.png") !important;
+  background-position: right 8px center !important;
+  background-repeat: no-repeat !important;
+  font-size: 18px !important;
+  text-transform: none !important;
+  letter-spacing: 0.045em !important;
+  margin: 0 !important; /* Reset margin since flex gap handles spacing */
+}
+
+/* Blue square before the title */
+.retro-title-bar::before {
+  content: '';
+  display: inline-block;
+  width: 14px; 
+  height: 14px;
+  background-color: #4D23CD;
+  margin-right: 8px;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+
+.retro-title-bar div { display: none !important; }
+
+/* INNER CONTENT AREA (Independent bordered box) */
+.retro-window-content {
+  border: 2px solid #4D23CD !important;
+  background-color: #FDF8FD !important;
+  position: relative !important;
+  margin: 0 !important;
+}
+
+/* NSO Buttons */
+button, .nav-link, #gb-submit {
+  background: #f0d1f1 !important;
+  box-shadow: inset 2px 2px #815CDA, 2px 2px #FDFDFD !important;
+  color: #4d23cf !important;
+  font-size: 15px !important;
+  font-family: 'pixelmplus10', sans-serif !important;
+  text-shadow: #f0d1f1 0px 2px 5px !important;
+  border: 2px solid #f0d1f1 !important;
+  border-radius: 2px !important;
+  padding: 4px 8px !important;
+  text-transform: none !important;
+  transition: none !important;
+}
+
+.hover-glow:hover, .hover-glow:focus {
+  color: #4d23cf !important;
+  text-shadow: none !important;
+  border-color: #815CDA !important;
+  background: #EFCFEF !important;
+}
+
+.title-glow {
+  text-shadow: none !important;
+  color: #4D21CB !important;
+  font-family: 'dinkie9px', sans-serif !important;
+  font-size: 32px !important;
+  font-style: normal !important;
+}
+
+input, textarea {
+  background-color: #FDF8FD !important;
+  color: #4D21CB !important;
+  border: 2px solid #4D23CD !important;
+  font-family: 'pixelmplus10', sans-serif !important;
+}
+input::placeholder, textarea::placeholder { color: #815CDA !important; opacity: 0.7 !important;}
+
+img { filter: none !important; opacity: 1 !important; }
+.grayscale, .opacity-50, .opacity-60, .opacity-70 { filter: none !important; opacity: 1 !important; }
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-blink { animation: blink 1s step-end infinite; }
